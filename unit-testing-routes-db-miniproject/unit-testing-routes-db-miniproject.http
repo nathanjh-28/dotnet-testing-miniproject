@@ -1,0 +1,6 @@
+@unit_testing_routes_db_miniproject_HostAddress = http://localhost:5267
+
+GET {{unit_testing_routes_db_miniproject_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
