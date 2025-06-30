@@ -1,21 +1,29 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
+using unit_testing_routes_db_miniproject.Data;
+using unit_testing_routes_db_miniproject.Services;
+using unit_testing_routes_db_miniproject.Models;
+
 namespace unit_testing_routes_db_miniproject.Controllers;
 
 [ApiController]
 [Route("[controller]")]
 public class ProjectsController : ControllerBase
 {
-    // private static readonly string[] Summaries = new[]
-    // {
-    //     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    // };
+    ProjectService _service;
+
+    public ProjectsController(ProjectService service)
+    {
+        _service = service;
+    }
+
 
     [HttpGet]
     public ActionResult Get()
     {
-        return Ok("Hello, World!");
+        var projects = _service.GetAllProjects();
+        return Ok(projects);
     }
 
     [HttpGet("{id}")]
